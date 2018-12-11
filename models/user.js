@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
@@ -10,5 +10,17 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     // associations can be defined here
   };
-  return User;
+  User.beforeCreate(user => {
+    user.username = user.username.toUpperCase()
+    return user
+  })
+
+  User.afterDestroy(user =>{
+    return sequelize.models.Kegiatan.destroy({
+	    where:{
+	      userId:UserId
+	    }
+    })
+  })
+return User;
 };

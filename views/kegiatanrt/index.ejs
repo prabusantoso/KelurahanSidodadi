@@ -18,8 +18,8 @@
                           <th style="width:20%">Nama Kegiatan</th>
                           <th style="width:10%">Foto</th>
                           <th style="width:30%">Deskripsi</th>
-                          <th style="width:15%">Createdby</th>
-                          <th style="width:10%">RtId</th>
+                          <th style="width:15%">Rt</th>
+                          <th style="width:10%">Umur</th>
                           <th style="color:black; width:20%">Aksi</th>
                       </thead>
                         <tbody>
@@ -28,8 +28,8 @@
                             <td><%= kegiatanrts[i].namakegiatan %></td>
                             <td><%= kegiatanrts[i].foto %></td>
                             <td><%= kegiatanrts[i].deskripsi %></td>
-                            <td><%= kegiatanrts[i].createdby %></td>
-                            <td><%= kegiatanrts[i].rtId %></td>
+                            <td><%= kegiatanrts[i].Rt.nama %></td>
+                            <td><%= kegiatanrts[i].Rt.umur %> tahun</td>
                             <td >
                               <a style="color:black" href="/kegiatanrts/delete/<%=kegiatanrts[i].id %>">Hapus</a>
                               <a style="color:black" href="/kegiatanrts/edit/<%=kegiatanrts[i].id %>">Edit</a>

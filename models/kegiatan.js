@@ -11,5 +11,6 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Kegiatan.belongsTo(sequelize.models.Rt, {foreignKey: 'rtId'})
   };
+
   return Kegiatan;
 };

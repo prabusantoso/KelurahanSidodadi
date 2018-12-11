@@ -16,7 +16,7 @@ router.get('/newaccount', (req,res) => {
 })
 
 router.post('/newaccount',(req, res)=>{
-  const {username,password,email,level} = req.body
+  let {username,password,email,level} = req.body
   password = bcrypt.hashSync(password, 10); 
   models.User.create({username,password,email,level}).then(user =>{
     return User.update({
@@ -28,7 +28,7 @@ router.post('/newaccount',(req, res)=>{
     });
     res.redirect('/users/login')
   }).catch(err => {
-    res.redirect('/newaccount')
+    res.redirect('/users/login')
   })
 });
 
@@ -51,7 +51,8 @@ router.post('/login',(req,res) =>{
   const checkPassword =  bcrypt.compareSync(password, user.password);
   if(checkPassword === true){
     req.session.user = {
-      username: user.username
+      username: user.username,
+      id: user.id
       }
       // console.log(req.session)
       res.redirect('/')

@@ -22,12 +22,25 @@ router.get('/',checkAuth, function(req, res) {
 });
 
 router.post('/create',checkAuth,(req, res) => {
-  const{namakegiatan,foto ,deskripsi,createdby,rtId} = req.body
-  models.Kegiatan.create({namakegiatan,foto,deskripsi,createdby,rtId}).then(kegiatanrt => {
-      res.redirect('/kegiatanrts')
-  }).catch(err => {
-      res.redirect('/kegiatanrts')
-  })
+  const{namakegiatan,foto ,deskripsi} = req.body
+  const userLogin = req.session.user
+    console.log(userLogin)
+    if(userLogin.username !== 'admin'){
+        models.Rt.findOne({where: {userid: userLogin.id}}).then(rt => {    
+            let createdby = rt.nama // ngambil dari data nama rt yg login
+            let rtId = rt.id // ngambil dari data id rt yg login
+            // buat data kegiatan 
+            models.Kegiatan.create({namakegiatan,foto,deskripsi,createdby,rtId}).then(kegiatanrt => {
+                res.redirect('/kegiatanrts')
+            }).catch(err => {
+                res.redirect('/kegiatanrts')
+            })
+        })
+    }else{
+        console.log('Admin tidak boleh membuat kegiatan!!!')
+        res.redirect('/kegiatanrts/create')
+    }
+      
 })
 router.get('/create',checkAuth, (req,res) => {
     const user = req.session.user
