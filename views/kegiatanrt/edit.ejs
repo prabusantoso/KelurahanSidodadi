@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <% var rootPath = '../'; %>      
+      <%- include(rootPath + 'partials/template/head.ejs'); %> 
+  </head>
+  <body>
+      <%- include(rootPath + 'partials/template/header.ejs'); %>
+      <div class="container">
+          <h1>Edit Data Kegiatan</h1>
+          <form action="/kegiatanrts/edit/<%= kegiatan.id%>" method="POST">
+            <label>Nama Kegiatan</label>
+            <input type="text" name="namakegiatan" value="<%= kegiatan.namakegiatan %>" />
+            <label>Foto</label>
+            <input type="text" name="foto" value="<%= kegiatan.foto %>" />
+            <label>Deskripsi</label>
+            <input type="text" name="deskripsi" value="<%= kegiatan.deskripsi %>" />
+            <label>createby</label>
+            <input type="text" name="createdby" value="<%= kegiatan.createdby %>" />
+            <label>RtId</label>
+            <input type="text" name="rtId" value="<%= kegiatan.rtId %>"/>
+            <button type="submit">Submit</button>
+          </form>
+      </div>    
+  </body>
+  <footer>      
+      <%- include(rootPath + 'partials/template/footer.ejs'); %>
+  </footer>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <% var rootPath = '../'; %>      
+      <%- include(rootPath + 'partials/template/head.ejs'); %> 
+  </head>
+  <body>
+      <%- include(rootPath + 'partials/template/header.ejs'); %>
+      <div class="container">
+          <h1>Edit Pengumuman</h1>
+          <form action="/pengumumans/edit/<%= pengumuman.id%>" method="POST">
+            <label>Nama Pengumuman</label>
+            <input type="text" name="namapengumuman" value="<%= pengumuman.namapengumuman %>" />
+            <label>Tanggal Dibuat</label>
+            <input type="text" name="tgldibuat" value="<%= pengumuman.tgldibuat %>" />
+            <label>Keterangan</label>
+            <input type="text" name="keterangan" value="<%= pengumuman.keterangan %>" />
+            <button type="submit">Submit</button>
+          </form>
+      </div>    
+  </body>
+  <footer>      
+      <%- include(rootPath + 'partials/template/footer.ejs'); %>
+  </footer>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <% var rootPath = '../'; %>      
+      <%- include(rootPath + 'partials/template/head.ejs'); %> 
+  </head>
+  <body>
+    <%- include(rootPath + 'partials/template/header.ejs'); %>
+    <div class="container">
+      <h1>Agenda Baru</h1>
+        <form action="/agendas/create" method="POST">
+            <label>Tanggal</label>
+            <input type="text" name="tanggal"/>
+            <label>Waktu Acara</label>
+            <input type="text" name="waktuacara"/>
+            <label>Keterangan</label>
+            <input type="text" name="keterangan"/>
+          <button type="submit">Submit</button>
+        </form>
+    </div>
+  </body>
+  <footer>      
+        <%- include(rootPath + 'partials/template/footer.ejs'); %>
+  </footer>
+</html>

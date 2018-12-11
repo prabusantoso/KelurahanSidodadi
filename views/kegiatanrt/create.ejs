@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <% var rootPath = '../'; %>      
+      <%- include(rootPath + 'partials/template/head.ejs'); %> 
+  </head>
+  <body>
+    <%- include(rootPath + 'partials/template/header.ejs'); %>
+    <div class="container">
+      <h1>Data Kegiatan</h1>
+        <form action="/kegiatanrts/create" method="POST">
+          <label>Nama Kegiatan</label>
+          <input type="text" name="namakegiatan" />
+          <label>Foto</label>
+          <input type="text" name="foto" />
+          <label>Deskripsi</label>
+          <input type="text" name="deskripsi" /> 
+          <label>createdby</label>
+          <input type="text" name="createdby" />
+          <label>rtId</label>
+          <input type="text" name="rtId" />
+          <button type="submit">Submit</button>
+        </form>
+    </div>
+  </body>
+  <footer>      
+        <%- include(rootPath + 'partials/template/footer.ejs'); %>
+  </footer>
+</html>

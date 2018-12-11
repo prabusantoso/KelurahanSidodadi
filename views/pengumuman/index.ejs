@@ -1,0 +1,30 @@
+<article class="sidebar">
+    <h1 class="sidebar-title"><strong>Pengumuman</strong></h1>
+    <p class="sidebar-body"> <strong> Berikut Data Pengumuman</strong> </p>
+    <div>
+        <div style="text-align:center">
+            <h2>Agenda<strong><a style="color:black" href="/pengumumans/create">+</a></strong></h2>                    
+        </div>
+        <table class="">
+            <thead>
+              <th style="width:20%"> Nama Pengumuman </th>
+              <th style="width:20%"> Tanggal Dibuat </th>
+              <th style="width:20%"> Keterangan </th>
+            </thead>
+            <tbody>
+              <%for(let i = 0 ; i < agendas.length; i++){%>
+              <tr>
+                <td><%= agendas[i].namapengumuman %></td>
+                <td><%= agendas[i].tgldibuat %></td>
+                <td><%= agendas[i].keterangan %></td>
+                <td >
+                  <a style="color:black" href="/pengumumans/delete/<%=pengumumans[i].id %>">Hapus</a>
+                  <a style="color:black" href="/pengumumans/edit/<%=pengumumans[i].id %>">Edit</a>
+                </td>
+      
+              </tr>
+              <%} %>
+            </tbody>
+          </table>
+    </div>
+  </article>

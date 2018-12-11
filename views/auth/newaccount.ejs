@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <% var rootPath = '../'; %>      
+      <%- include(rootPath + 'partials/template/head.ejs'); %> 
+  </head>
+  <body>
+        <%- include(rootPath + 'partials/template/headerlogin.ejs'); %>
+    <h1>Buat Akun</h1>
+    <form action="/users/newaccount" method="POST">
+    <label>username</label>
+    <input type="text" name="username" />
+    <label>password</label>
+    <input type="password" name="password" />
+    <label>email</label>
+    <input type="email" name="email" />
+    <label>level</label>
+    <select name="level">
+        <option value="Staf" >Staf</option>
+        <option value="Rt" >RT</option>
+        <option value="Warga">Warga</option>
+        </select>
+    <button type="submit">Submit</button>
+    </form>
+  </body>
+  <footer>
+      <%- include(rootPath + 'partials/template/footer.ejs'); %>
+  </footer>
+</html>
