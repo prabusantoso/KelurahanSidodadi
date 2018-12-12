@@ -47,12 +47,21 @@ router.post('/login',(req,res) =>{
       username:username,
     }
 }).then(user =>{
+  console.log('find one berhasil')
+    console.log(user)
   if (user != null){
+    console.log('username lo ada kok')
+    console.log(user)
   const checkPassword =  bcrypt.compareSync(password, user.password);
   if(checkPassword === true){
+    console.log('Password kau sudah benar')
+    console.log(user)
     req.session.user = {
       username: user.username,
-      id: user.id
+      id: user.id,
+      email: user.email,
+      foto: user.foto,
+      level: user.level
       }
       // console.log(req.session)
       res.redirect('/')

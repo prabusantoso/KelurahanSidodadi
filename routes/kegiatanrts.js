@@ -25,7 +25,7 @@ router.post('/create',checkAuth,(req, res) => {
   const{namakegiatan,foto ,deskripsi} = req.body
   const userLogin = req.session.user
     console.log(userLogin)
-    if(userLogin.username !== 'admin'){
+    if(userLogin.level === 'Rt'){
         models.Rt.findOne({where: {userid: userLogin.id}}).then(rt => {    
             let createdby = rt.nama // ngambil dari data nama rt yg login
             let rtId = rt.id // ngambil dari data id rt yg login
@@ -42,8 +42,9 @@ router.post('/create',checkAuth,(req, res) => {
     }
       
 })
-router.get('/create',checkAuth, (req,res) => {
+router.get('/create',checkAuth, (req,res) => {    
     const user = req.session.user
+    console.log(user)
     res.render('kegiatanrt/create',{
     pageTitle: 'Kegiatan',
     user:user

@@ -2,7 +2,7 @@
 <html>
   <head>
     <% var rootPath = '../'; %>      
-    <%- include(rootPath + 'partials/template/head.ejs'); %>    
+    <%- include(rootPath + 'partials/template/head.ejs'); %> 
   </head>
   <body>    
     <%- include(rootPath + 'partials/template/header.ejs'); %>
@@ -11,16 +11,22 @@
             <div class="col-sm-12">                
                 <div>
                     <div style="text-align:center">
-                        <h2><strong>Data Kegiatan RT <a style="color:black" href="/kegiatanrts/create">+</a></strong></h2>                    
+                        <h2><strong>Data Kegiatan RT <a style="color:black" href="/kegiatanrts/create">
+                            <% if(user.level === 'Rt'){ %>
+                                +
+                            <% } %> 
+                        </a></strong></h2>                    
                     </div>
-                    <table class="">
+                    <table class="ui small very compact selectable celled striped table">
                       <thead style="text-align:center" >
-                          <th style="width:20%">Nama Kegiatan</th>
-                          <th style="width:10%">Foto</th>
-                          <th style="width:30%">Deskripsi</th>
-                          <th style="width:15%">Rt</th>
-                          <th style="width:10%">Umur</th>
-                          <th style="color:black; width:20%">Aksi</th>
+                          <th>Nama Kegiatan</th>
+                          <th>Foto</th>
+                          <th>Deskripsi</th>
+                          <th>Rt</th>
+                          <th>Umur</th>
+                          <% if(user.level === 'Rt'){ %>
+                            <th colspan = "2"> Aksi </th>
+                          <% } %>
                       </thead>
                         <tbody>
                           <%for(let i = 0 ; i < kegiatanrts.length; i++){%>
@@ -30,13 +36,16 @@
                             <td><%= kegiatanrts[i].deskripsi %></td>
                             <td><%= kegiatanrts[i].Rt.nama %></td>
                             <td><%= kegiatanrts[i].Rt.umur %> tahun</td>
+                            <% if(user.level === 'Rt'){ %>
                             <td >
-                              <a style="color:black" href="/kegiatanrts/delete/<%=kegiatanrts[i].id %>">Hapus</a>
-                              <a style="color:black" href="/kegiatanrts/edit/<%=kegiatanrts[i].id %>">Edit</a>
-                            </td>
-                  
+                                    <a style="color:black" href="/kegiatanrts/edit/<%=kegiatanrts[i].id %>">Edit</a>
+                             </td>
+                             <td>
+                                    <a style="color:black" href="/kegiatanrts/delete/<%=kegiatanrts[i].id %>"onclick="return confirm('Anda Yakin Data Dihapus?')">Hapus</a>
+                             </td> 
+                             <% } %>             
                           </tr>
-                          <%} %>
+                          <% } %>
                         </tbody>
                       </table>
                 </div>              

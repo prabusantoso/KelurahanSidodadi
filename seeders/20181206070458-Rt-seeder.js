@@ -4,9 +4,15 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Rts', [{
-      nama: 'Rt001',
-      umur:'30',
+      nama: 'STAF001',
+      umur:'35',
       userId: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      nama: 'RT001',
+      umur:'30',
+      userId: 3,
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
